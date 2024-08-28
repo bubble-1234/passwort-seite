@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Für Jakob ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f8eef7;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ff69b4;
+        }
+
+        p {
+            color: #ff69b4;
+            font-size: 18px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #ff69b4;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        #message {
+            display: none;
+            margin-top: 20px;
+            color: #d6336c;
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+        .heart, .butterfly {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+            animation: fly 6s linear infinite;
+        }
+
+        .heart {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Heart_symbol.svg/1024px-Heart_symbol.svg.png');
+            background-size: cover;
+        }
+
+        .butterfly {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Butterfly_icon.svg/768px-Butterfly_icon.svg.png');
+            background-size: cover;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-800px) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Willkommen, Jakob! 💖</h1>
+    <p>Gib das geheime Passwort ein, um eine besondere Nachricht zu erhalten:</p>
+    <input type="password" id="password" placeholder="Passwort">
+    <button onclick="checkPassword()">Einreichen</button>
+
+    <div id="message">
+        <h2>Lieber Jakob,</h2>
+        <p>Du hast das Geheimnis gelüftet! 🌹</p>
+        <p>Ich würde dich gerne zu einem romantischen Dinner einladen. 🍣</p>
+        <p>Vielleicht ja wieder mal zu Tastekitchen, die Sushiplatte dort war einfach unvergesslich 😍</p>
+        <p>Ich freue mich darauf, den Abend mit dir zu verbringen. Du bist mir unglaublich wichtig und ich bin sehr glücklich darüber schon 9 Monate lang dein Mädchen zu sein. 💕</p>
+        <p>Hab dich lieb,</p>
+        <p>Deine Barbara 💖</p>
+    </div>
+
+    <script>
+        function createFlyingElements() {
+            const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#db7093'];
+            for (let i = 0; i < 20; i++) {
+                let element = document.createElement('div');
+                element.className = i % 2 === 0 ? 'heart' : 'butterfly';
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.animationDelay = Math.random() * 4 + 's';
+                element.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(element);
+            }
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === 'Rose') {
+                document.getElementById('message').style.display = 'block';
+                createFlyingElements();
+            } else {
+                alert('Falsches Passwort');
+            }
+        }
+    </script>
+
+</body>
+</html>
